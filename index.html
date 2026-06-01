@@ -301,7 +301,7 @@
             <p id="loadingText">Submitting your feedback...</p>
         </div>
 
-        <form id="feedbackForm" action="https://formspree.io/f/xyzabrqw" method="POST">
+        <form id="feedbackForm" onsubmit="submitForm(event)">
             <!-- Section 1: Customer Information -->
             <div class="section">
                 <div class="section-title" id="section1Title">Section 1: Customer Information</div>
@@ -808,6 +808,93 @@
             e.target.classList.add('selected');
         }
 
+        // Submit form to Zapier
+        async function submitForm(e) {
+            e.preventDefault();
+            
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
+            
+            // Collect form data
+            const formData = {
+                customerName: document.getElementById('customerName').value,
+                phone: document.getElementById('phone').value,
+                visitDate: document.getElementById('visitDate').value,
+                visitTime: document.getElementById('visitTime').value,
+                roomTable: document.getElementById('roomTable').value,
+                service1: document.getElementById('service1_hidden').value,
+                service2: document.getElementById('service2_hidden').value,
+                service3: document.getElementById('service3_hidden').value,
+                service4: document.getElementById('service4_hidden').value,
+                service5: document.getElementById('service5_hidden').value,
+                service6: document.getElementById('service6_hidden').value,
+                food1: document.getElementById('food1_hidden').value,
+                food2: document.getElementById('food2_hidden').value,
+                food3: document.getElementById('food3_hidden').value,
+                food4: document.getElementById('food4_hidden').value,
+                food5: document.getElementById('food5_hidden').value,
+                bev1: document.getElementById('bev1_hidden').value,
+                bev2: document.getElementById('bev2_hidden').value,
+                bev3: document.getElementById('bev3_hidden').value,
+                bev4: document.getElementById('bev4_hidden').value,
+                ktv1: document.getElementById('ktv1_hidden').value,
+                ktv2: document.getElementById('ktv2_hidden').value,
+                ktv3: document.getElementById('ktv3_hidden').value,
+                ktv4: document.getElementById('ktv4_hidden').value,
+                willReturn: document.getElementById('willReturn_hidden').value,
+                recommend: document.getElementById('recommend_hidden').value,
+                overallRating: document.getElementById('overallRating_hidden').value,
+                staffRecognition: document.getElementById('staffRecognition').value,
+                comments: document.getElementById('comments').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            try {
+                // Send to Zapier webhook
+                const response = await fetch('https://hooks.zapier.com/hooks/catch/27801645/4b97ypv/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                if (response.ok) {
+                    // Success
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('feedbackForm').reset();
+                    
+                    // Clear ratings
+                    ratings = {};
+                    document.querySelectorAll('.rating-btn.selected').forEach(btn => {
+                        btn.classList.remove('selected');
+                    });
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        document.getElementById('successMessage').style.display = 'none';
+                    }, 5000);
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('errorMessage').style.display = 'block';
+                
+                // Hide error message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('errorMessage').style.display = 'none';
+                }, 5000);
+            }
+        }
+        
         // Initialize
         updateLanguage();
     </script>
