@@ -4,90 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mega Z SKY View - Customer Feedback Form</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&family=Padauk:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-color: #1C1C1C;
-            --accent-gold: #C9A24D;
-            --text-white: #FFFFFF;
-            --text-gray: #A0A0A0;
-            --card-bg: #262626;
-            --input-bg: #333333;
-            --border-color: #444444;
-            --excellent: #4CAF50;
-            --good: #8BC34A;
-            --fair: #FFC107;
-            --poor: #F44336;
-        }
-
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-        }
-
-        html, body {
-            height: 100%;
+            box-sizing: border-box;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-white);
-            font-family: 'Padauk', 'Inter', sans-serif;
-            line-height: 1.8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1C1C1C;
+            color: #E0E0E0;
+            line-height: 1.6;
             padding: 20px;
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;
         }
 
         .container {
-            max-width: 750px;
-            width: 100%;
-            background-color: var(--card-bg);
-            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #2A2A2A;
             border-radius: 12px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(201, 162, 77, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
         }
 
         .header {
+            background: linear-gradient(135deg, #1C1C1C 0%, #2A2A2A 100%);
+            border-bottom: 3px solid #C9A24D;
+            padding: 40px 30px;
             text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 2px solid var(--accent-gold);
-            padding-bottom: 20px;
         }
 
         .header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5em;
-            color: var(--accent-gold);
+            font-size: 48px;
+            color: #C9A24D;
             margin-bottom: 10px;
             letter-spacing: 2px;
+            font-weight: 700;
         }
 
         .header p {
-            color: var(--text-gray);
-            font-size: 0.95em;
+            color: #A0A0A0;
+            font-size: 16px;
+            margin-bottom: 5px;
         }
 
-        .section {
-            margin-bottom: 35px;
+        .header .subtitle {
+            color: #C9A24D;
+            font-size: 14px;
+            margin-top: 10px;
         }
 
-        .section-title {
-            font-size: 1.3em;
-            color: var(--accent-gold);
-            margin-bottom: 20px;
-            font-weight: 600;
+        .language-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
             display: flex;
-            align-items: center;
             gap: 10px;
         }
 
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid #C9A24D;
+            background: transparent;
+            color: #C9A24D;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: #C9A24D;
+            color: #1C1C1C;
+        }
+
+        .lang-btn:hover {
+            background: #C9A24D;
+            color: #1C1C1C;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #C9A24D;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #C9A24D;
+            display: flex;
+            align-items: center;
+        }
+
         .section-title::before {
-            content: "▪";
-            font-size: 1.2em;
+            content: "●";
+            margin-right: 12px;
+            font-size: 24px;
         }
 
         .form-group {
@@ -97,40 +115,41 @@
         label {
             display: block;
             margin-bottom: 8px;
-            color: var(--text-white);
-            font-weight: 500;
-            font-size: 0.95em;
+            color: #C9A24D;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .optional {
+            color: #A0A0A0;
+            font-size: 12px;
+            font-weight: 400;
         }
 
         input[type="text"],
-        input[type="email"],
         input[type="tel"],
         input[type="date"],
-        input[type="time"],
         select,
         textarea {
             width: 100%;
             padding: 12px;
-            background-color: var(--input-bg);
-            color: var(--text-white);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-family: 'Padauk', 'Inter', sans-serif;
-            font-size: 0.95em;
+            background: #1C1C1C;
+            border: 2px solid #C9A24D;
+            color: #E0E0E0;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: inherit;
             transition: all 0.3s ease;
         }
 
         input[type="text"]:focus,
-        input[type="email"]:focus,
         input[type="tel"]:focus,
         input[type="date"]:focus,
-        input[type="time"]:focus,
         select:focus,
         textarea:focus {
             outline: none;
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 8px rgba(201, 162, 77, 0.3);
-            background-color: rgba(51, 51, 51, 0.8);
+            box-shadow: 0 0 10px rgba(201, 162, 77, 0.5);
+            border-color: #D4B896;
         }
 
         textarea {
@@ -138,620 +157,683 @@
             min-height: 100px;
         }
 
-        .rating-matrix {
+        .rating-table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
-            font-size: 0.9em;
+            overflow-x: auto;
+            display: block;
         }
 
-        .rating-matrix th,
-        .rating-matrix td {
+        .rating-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .rating-table th,
+        .rating-table td {
             padding: 12px;
             text-align: center;
-            border: 1px solid var(--border-color);
+            border: 1px solid #3A3A3A;
         }
 
-        .rating-matrix th {
-            background-color: rgba(201, 162, 77, 0.1);
-            color: var(--accent-gold);
+        .rating-table th {
+            background: #1C1C1C;
+            color: #C9A24D;
             font-weight: 600;
+            border-color: #C9A24D;
         }
 
-        .rating-matrix td:first-child {
+        .rating-table td:first-child {
             text-align: left;
-            background-color: rgba(51, 51, 51, 0.5);
+            color: #E0E0E0;
+            background: #252525;
             font-weight: 500;
         }
 
-        .rating-matrix input[type="radio"] {
+        .rating-table input[type="radio"] {
             width: 20px;
             height: 20px;
             cursor: pointer;
-            accent-color: var(--accent-gold);
+            accent-color: #C9A24D;
         }
 
         .button-group {
             display: flex;
             gap: 10px;
+            justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
-        .rating-button {
-            flex: 1;
-            min-width: 100px;
-            padding: 12px;
-            border: 2px solid var(--border-color);
-            background-color: var(--input-bg);
-            color: var(--text-white);
-            border-radius: 6px;
+        .btn {
+            padding: 10px 20px;
+            border: 2px solid #C9A24D;
+            background: transparent;
+            color: #C9A24D;
             cursor: pointer;
-            font-family: 'Padauk', 'Inter', sans-serif;
-            font-size: 0.9em;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .rating-button:hover {
-            border-color: var(--accent-gold);
-            background-color: rgba(201, 162, 77, 0.1);
-        }
-
-        .rating-button.selected {
-            background-color: var(--accent-gold);
-            color: var(--bg-color);
-            border-color: var(--accent-gold);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, var(--accent-gold), #B8922A);
-            color: var(--bg-color);
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
+            border-radius: 4px;
             font-weight: 600;
-            cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Padauk', 'Inter', sans-serif;
-            letter-spacing: 1px;
+            min-width: 100px;
         }
 
-        .submit-btn:hover {
+        .btn:hover,
+        .btn.selected {
+            background: #C9A24D;
+            color: #1C1C1C;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: #C9A24D;
+            color: #1C1C1C;
+            border: none;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            background: #D4B896;
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(201, 162, 77, 0.4);
+            box-shadow: 0 4px 12px rgba(201, 162, 77, 0.3);
         }
 
-        .submit-btn:active {
+        .btn-submit:active {
             transform: translateY(0);
         }
 
-        .submit-btn:disabled {
-            opacity: 0.6;
+        .btn-submit:disabled {
+            background: #666;
             cursor: not-allowed;
+            opacity: 0.6;
         }
 
         .success-message {
             display: none;
-            background-color: rgba(76, 175, 80, 0.1);
-            border: 2px solid var(--excellent);
-            border-radius: 8px;
+            background: #2D5016;
+            border: 2px solid #4CAF50;
+            color: #4CAF50;
             padding: 20px;
+            border-radius: 4px;
             margin-bottom: 20px;
             text-align: center;
-            color: var(--excellent);
-        }
-
-        .success-message.show {
-            display: block;
-            animation: slideIn 0.5s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .error-message {
             display: none;
-            background-color: rgba(244, 67, 54, 0.1);
-            border: 2px solid var(--poor);
-            border-radius: 8px;
+            background: #5C1C1C;
+            border: 2px solid #FF6B6B;
+            color: #FF6B6B;
             padding: 20px;
+            border-radius: 4px;
             margin-bottom: 20px;
             text-align: center;
-            color: var(--poor);
-        }
-
-        .error-message.show {
-            display: block;
-            animation: slideIn 0.5s ease;
         }
 
         .loading {
             display: none;
             text-align: center;
-            color: var(--accent-gold);
-            margin: 20px 0;
-        }
-
-        .loading.show {
-            display: block;
-        }
-
-        .spinner {
-            border: 3px solid rgba(201, 162, 77, 0.2);
-            border-top: 3px solid var(--accent-gold);
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 10px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .optional-text {
-            font-size: 0.85em;
-            color: var(--text-gray);
-            margin-top: 5px;
-        }
-
-        .language-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-            z-index: 1000;
-        }
-
-        .lang-btn {
-            padding: 8px 15px;
-            background-color: var(--input-bg);
-            color: var(--accent-gold);
-            border: 1px solid var(--accent-gold);
-            border-radius: 5px;
-            cursor: pointer;
+            color: #C9A24D;
             font-weight: 600;
-            transition: all 0.3s ease;
         }
 
-        .lang-btn.active {
-            background-color: var(--accent-gold);
-            color: var(--bg-color);
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 25px;
-            }
-
+        @media (max-width: 768px) {
             .header h1 {
-                font-size: 1.8em;
+                font-size: 36px;
             }
 
-            .rating-matrix {
-                font-size: 0.8em;
+            .content {
+                padding: 20px;
             }
 
-            .rating-matrix th,
-            .rating-matrix td {
+            .rating-table {
+                font-size: 12px;
+            }
+
+            .rating-table th,
+            .rating-table td {
                 padding: 8px;
             }
 
             .button-group {
-                gap: 8px;
+                flex-direction: column;
             }
 
-            .rating-button {
-                min-width: 80px;
-                padding: 10px;
-                font-size: 0.85em;
+            .btn {
+                width: 100%;
             }
+        }
 
-            .language-toggle {
-                top: 10px;
-                right: 10px;
-                gap: 5px;
-            }
-
-            .lang-btn {
-                padding: 6px 12px;
-                font-size: 0.85em;
-            }
+        .hidden {
+            display: none !important;
         }
     </style>
 </head>
 <body>
     <div class="language-toggle">
-        <button class="lang-btn active" onclick="setLanguage('my')">မြန်မာ</button>
-        <button class="lang-btn" onclick="setLanguage('en')">English</button>
+        <button class="lang-btn active" data-lang="my">မြန်မာ</button>
+        <button class="lang-btn" data-lang="en">English</button>
     </div>
 
     <div class="container">
-        <div class="success-message" id="successMessage">
-            <h3>✓ အကြေးခံပြီးပါပြီ!</h3>
-            <p>သင့်ကိုယ်ပိုင်အကြေးခံစာသည် အောင်မြင်စွာ ပေးပို့ခဲ့ပါပြီ။</p>
+        <div class="header">
+            <h1>MEGA Z</h1>
+            <p data-text="subtitle">Sky View & Family KTV</p>
+            <p data-text="form-title" class="subtitle">အကြေးခံပြစာ</p>
         </div>
 
-        <div class="error-message" id="errorMessage">
-            <h3>✗ အမှားအယွင်း</h3>
-            <p id="errorText"></p>
+        <div class="content">
+            <div class="success-message" id="successMessage">
+                <p data-text="success-msg">✓ ကျေးဇူးတင်သည်။ သင့်အကြေးခံစာကို လက်ခံရရှိပြီးပါပြီ။</p>
+            </div>
+
+            <div class="error-message" id="errorMessage">
+                <p id="errorText"></p>
+            </div>
+
+            <form id="feedbackForm">
+                <!-- Section 1: Customer Information -->
+                <div class="section">
+                    <h2 class="section-title" data-text="section1">အကြေးခံသူ အချက်အလက်</h2>
+                    
+                    <div class="form-group">
+                        <label for="customer_name" data-text="name">အမည် <span class="optional" data-text="optional">(ရွေးချယ်ခွင့်ရှိ)</span></label>
+                        <input type="text" id="customer_name" name="customer_name" placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone_number" data-text="phone">ဖုန်းနံပါတ် <span class="optional" data-text="optional">(ရွေးချယ်ခွင့်ရှိ)</span></label>
+                        <input type="tel" id="phone_number" name="phone_number" placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="visit_date" data-text="visit-date">လည်ပတ်ခဲ့သည့်နေ့စွဲ</label>
+                        <input type="date" id="visit_date" name="visit_date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="visit_time" data-text="visit-time">လည်ပတ်ခဲ့သည့်အချိန်</label>
+                        <select id="visit_time" name="visit_time" required>
+                            <option value="">-- ရွေးချယ်ပါ --</option>
+                            <option value="Lunch">နံနက်စာ (Lunch)</option>
+                            <option value="Dinner">ညစာ (Dinner)</option>
+                            <option value="Late Night">နံနက်ပိုင်း (Late Night)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="room_table_no" data-text="room">အခန်း/စားပွဲ နံပါတ် <span class="optional" data-text="optional">(ရွေးချယ်ခွင့်ရှိ)</span></label>
+                        <input type="text" id="room_table_no" name="room_table_no" placeholder="">
+                    </div>
+                </div>
+
+                <!-- Section 2: Service Evaluation -->
+                <div class="section">
+                    <h2 class="section-title" data-text="section2">ဝန်ဆောင်မှု အဆင့်သတ်မှတ်ခြင်း</h2>
+                    <div class="rating-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th data-text="criteria">အကဲအဆတ်</th>
+                                    <th data-text="excellent">အလွန်ကောင်း</th>
+                                    <th data-text="good">ကောင်း</th>
+                                    <th data-text="fair">အလယ်အလတ်</th>
+                                    <th data-text="poor">အားနည်း</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-text="service-welcome">ဝန်ဆောင်မှုသူ၏ အလိုအလျှောက်နှင့် ကြိုဆိုခြင်း</td>
+                                    <td><input type="radio" name="service_welcome" value="Excellent"></td>
+                                    <td><input type="radio" name="service_welcome" value="Good"></td>
+                                    <td><input type="radio" name="service_welcome" value="Fair"></td>
+                                    <td><input type="radio" name="service_welcome" value="Poor"></td>
+                                </tr>
+                                <tr>
+                                    <td data-text="service-attitude">ဝန်ဆောင်မှုသူ၏ အမူအကျင့်</td>
+                                    <td><input type="radio" name="service_attitude" value="Excellent"></td>
+                                    <td><input type="radio" name="service_attitude" value="Good"></td>
+                                    <td><input type="radio" name="service_attitude" value="Fair"></td>
+                                    <td><input type="radio" name="service_attitude" value="Poor"></td>
+                                </tr>
+                                <tr>
+                                    <td data-text="service-speed">ဝန်ဆောင်မှု၏ အမြန်လျှင်မြန်ခြင်း</td>
+                                    <td><input type="radio" name="service_speed" value="Excellent"></td>
+                                    <td><input type="radio" name="service_speed" value="Good"></td>
+                                    <td><input type="radio" name="service_speed" value="Fair"></td>
+                                    <td><input type="radio" name="service_speed" value="Poor"></td>
+                                </tr>
+                                <tr>
+                                    <td data-text="service-communication">ဝန်ဆောင်မှုသူ၏ ဆက်သွယ်ရန်အလယ်အလတ်</td>
+                                    <td><input type="radio" name="service_communication" value="Excellent"></td>
+                                    <td><input type="radio" name="service_communication" value="Good"></td>
+                                    <td><input type="radio" name="service_communication" value="Fair"></td>
+                                    <td><input type="radio" name="service_communication" value="Poor"></td>
+                                </tr>
+                                <tr>
+                                    <td data-text="service-cleanliness">အခန်း/စားပွဲ ရှင်းလင်းခြင်း</td>
+                                    <td><input type="radio" name="service_cleanliness" value="Excellent"></td>
+                                    <td><input type="radio" name="service_cleanliness" value="Good"></td>
+                                    <td><input type="radio" name="service_cleanliness" value="Fair"></td>
+                                    <td><input type="radio" name="service_cleanliness" value="Poor"></td>
+                                </tr>
+                                <tr>
+                                    <td data-text="service-overall">ကုန်ပြီးမြောက်သော ဝန်ဆောင်မှု အတွေ့အကြုံ</td>
+                                    <td><input type="radio" name="service_overall" value="Excellent"></td>
+                                    <td><input type="radio" name="service_overall" value="Good"></td>
+                                    <td><input type="radio" name="service_overall" value="Fair"></td>
+                                    <td><input type="radio" name="service_overall" value="Poor"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section 3: Food Evaluation -->
+                <div class="section">
+                    <h2 class="section-title" data-text="section3">အစားအစာ အဆင့်သတ်မှတ်ခြင်း</h2>
+                    <div class="rating-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th data-text="criteria">အကဲအဆတ်</th>
+                                    <th data-text="excellent">အလွန်ကောင်း</th>
+                                    <th data-text="good">ကောင်း</th>
+                                    <th data-text="fair">အလယ်အလတ်</th>
+                                    <th data-text="poor">အားနည်း</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-text="food-taste">အစားအစာ၏ အရသာ</td>
+                                    <td><input type="radio" name="food_taste" value="Excellent"></td>
+                                    <td><input type="radio" name="food_taste" value="Good"></td>
+                                    <td><input type="radio" name="food_taste" value="Fair"></td>
+                                    <td><input type="radio" name="food_taste" value="Poor"></td>
+                                </tr>
+                                <tr>
+                                    <td data-text="food-freshness">အစားအစာ၏ စိုစေးခြင်း</td>
+                                    <td><input type="radio" name="food_freshness" value="Excellent"></td>
+                                    <td><input type="radio" name="food_freshness" value="Good"></td>
+                                    <td><input type="radio" name="food_freshness" value="Fair"></td>
+                                    <td><input type="radio" name="food_freshness" value="Poor"></td>
+                                </tr>
+                                <tr>
+                                    <td data-text="food-presentation">အစားအစာ၏ ပြသနည်းလမ်း</td>
+                                    <td><input type="radio" name="food_presentation" value="Excellent"></td>
+                                    <td><input type="radio" name="food_presentation" value="Good"></td>
+                                    <td><input type="radio" name="food_presentation" value="Fair"></td>
+                                    <td><input type="radio" name="food_presentation" value="Poor"></td>
+                                </tr>
+                                <tr>
+                                    <td data-text="food-portion">အစားအစာ၏ အရေအတွက်</td>
+                                    <td><input type="radio" name="food_portion" value="Excellent"></td>
+                                    <td><input type="radio" name="food_portion" value="Good"></td>
+                                    <td><input type="radio" name="food_portion" value="Fair"></td>
+                                    <td><input type="radio" name="food_portion" value="Poor"></td>
+                                </tr>
+                                <tr>
+                                    <td data-text="food-variety">စာရင်း၏ အမျိုးအစားများ</td>
+                                    <td><input type="radio" name="food_variety" value="Excellent"></td>
+                                    <td><input type="radio" name="food_variety" value="Good"></td>
+                                    <td><input type="radio" name="food_variety" value="Fair"></td>
+                                    <td><input type="radio" name="food_variety" value="Poor"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section 4: Beverage Evaluation -->
+                <div class="section">
+                    <h2 class="section-title" data-text="section4">အသောက်အရည် အဆင့်သတ်မှတ်ခြင်း</h2>
+                    <div class="rating-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th data-text="criteria">အကဲအဆတ်</th>
+                                    <th data-text="excellent">အလွန်ကောင်း</th>
+                                    <th data-text="good">ကောင်း</th>
+                                    <th data-text="fair">အလယ်အလတ်</th>
+                                    <th data-text="poor">အားနည်း</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-text="beverage-quality">အသောက်အရည်၏ အရည်အသွေး</td>
+                                    <td><input type="radio" name="beverage_quality" value="Excellent"></td>
+                                    <td><input type="radio" name="beverage_quality" value="Good"></td>
+                                    <td><input type="radio" name="beverage_quality" value="Fair"></td>
+                                    <td><input type="radio" name="beverage_quality" value="Poor"></td>
+                                </tr>
+                                <tr>
+                                    <td data-text="beverage-taste">အသောက်အရည်၏ အရသာ</td>
+                                    <td><input type="radio" name="beverage_taste" value="Excellent"></td>
+                                    <td><input type="radio" name="beverage_taste" value="Good"></td>
+                                    <td><input type="radio" name="beverage_taste" value="Fair"></td>
+                                    <td><input type="radio" name="beverage_taste" value="Poor"></td>
+                                </tr>
+                                <tr>
+                                    <td data-text="bar-service">ဘားဝန်ဆောင်မှု</td>
+                                    <td><input type="radio" name="bar_service" value="Excellent"></td>
+                                    <td><input type="radio" name="bar_service" value="Good"></td>
+                                    <td><input type="radio" name="bar_service" value="Fair"></td>
+                                    <td><input type="radio" name="bar_service" value="Poor"></td>
+                                </tr>
+                                <tr>
+                                    <td data-text="beverage-presentation">အသောက်အရည်၏ ပြသနည်းလမ်း</td>
+                                    <td><input type="radio" name="beverage_presentation" value="Excellent"></td>
+                                    <td><input type="radio" name="beverage_presentation" value="Good"></td>
+                                    <td><input type="radio" name="beverage_presentation" value="Fair"></td>
+                                    <td><input type="radio" name="beverage_presentation" value="Poor"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section 5: KTV Evaluation -->
+                <div class="section">
+                    <h2 class="section-title" data-text="section5">မိသားစုကေတီဗီ အဆင့်သတ်မှတ်ခြင်း</h2>
+                    <div class="rating-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th data-text="criteria">အကဲအဆတ်</th>
+                                    <th data-text="excellent">အလွန်ကောင်း</th>
+                                    <th data-text="good">ကောင်း</th>
+                                    <th data-text="fair">အလယ်အလတ်</th>
+                                    <th data-text="poor">အားနည်း</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-text="ktv-sound">အသံ အရည်အသွေး</td>
+                                    <td><input type="radio" name="ktv_sound" value="Excellent"></td>
+                                    <td><input type="radio" name="ktv_sound" value="Good"></td>
+                                    <td><input type="radio" name="ktv_sound" value="Fair"></td>
+                                    <td><input type="radio" name="ktv_sound" value="Poor"></td>
+                                </tr>
+                                <tr>
+                                    <td data-text="ktv-comfort">အခန်း၏ အဆင်ပြေခြင်း</td>
+                                    <td><input type="radio" name="ktv_comfort" value="Excellent"></td>
+                                    <td><input type="radio" name="ktv_comfort" value="Good"></td>
+                                    <td><input type="radio" name="ktv_comfort" value="Fair"></td>
+                                    <td><input type="radio" name="ktv_comfort" value="Poor"></td>
+                                </tr>
+                                <tr>
+                                    <td data-text="ktv-cleanliness">အခန်း၏ ရှင်းလင်းခြင်း</td>
+                                    <td><input type="radio" name="ktv_cleanliness" value="Excellent"></td>
+                                    <td><input type="radio" name="ktv_cleanliness" value="Good"></td>
+                                    <td><input type="radio" name="ktv_cleanliness" value="Fair"></td>
+                                    <td><input type="radio" name="ktv_cleanliness" value="Poor"></td>
+                                </tr>
+                                <tr>
+                                    <td data-text="ktv-system">သီချင်းစနစ် အရည်အသွေး</td>
+                                    <td><input type="radio" name="ktv_system" value="Excellent"></td>
+                                    <td><input type="radio" name="ktv_system" value="Good"></td>
+                                    <td><input type="radio" name="ktv_system" value="Fair"></td>
+                                    <td><input type="radio" name="ktv_system" value="Poor"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section 6: Overall Satisfaction -->
+                <div class="section">
+                    <h2 class="section-title" data-text="section6">ကုန်ပြီးမြောက်သော ကျေးဇူးတင်မှု</h2>
+                    
+                    <div class="form-group">
+                        <label data-text="satisfaction-level">သင့်ကျေးဇူးတင်မှု အဆင့်</label>
+                        <div class="button-group">
+                            <button type="button" class="btn" data-value="Very Satisfied" data-name="satisfaction_level" data-text="very-satisfied">အလွန်ကျေးဇူးတင်သည်</button>
+                            <button type="button" class="btn" data-value="Satisfied" data-name="satisfaction_level" data-text="satisfied">ကျေးဇူးတင်သည်</button>
+                            <button type="button" class="btn" data-value="Neutral" data-name="satisfaction_level" data-text="neutral">အလယ်အလတ်</button>
+                            <button type="button" class="btn" data-value="Dissatisfied" data-name="satisfaction_level" data-text="dissatisfied">မကျေးဇူးတင်သည်</button>
+                        </div>
+                        <input type="hidden" id="satisfaction_level" name="satisfaction_level">
+                    </div>
+
+                    <div class="form-group">
+                        <label data-text="revisit">နောက်တစ်ကြိမ်လည်ပတ်ရန် ရည်ရွယ်သည်</label>
+                        <div class="button-group">
+                            <button type="button" class="btn" data-value="Yes" data-name="will_revisit" data-text="yes">ဟုတ်ကဲ့</button>
+                            <button type="button" class="btn" data-value="Maybe" data-name="will_revisit" data-text="maybe">ထင်မြင်ရန်</button>
+                            <button type="button" class="btn" data-value="No" data-name="will_revisit" data-text="no">မဟုတ်ပါ</button>
+                        </div>
+                        <input type="hidden" id="will_revisit" name="will_revisit">
+                    </div>
+
+                    <div class="form-group">
+                        <label data-text="recommend">သူငယ်ချင်းများအား အကြံပြုမည်</label>
+                        <div class="button-group">
+                            <button type="button" class="btn" data-value="Yes" data-name="will_recommend" data-text="yes">ဟုတ်ကဲ့</button>
+                            <button type="button" class="btn" data-value="Maybe" data-name="will_recommend" data-text="maybe">ထင်မြင်ရန်</button>
+                            <button type="button" class="btn" data-value="No" data-name="will_recommend" data-text="no">မဟုတ်ပါ</button>
+                        </div>
+                        <input type="hidden" id="will_recommend" name="will_recommend">
+                    </div>
+                </div>
+
+                <!-- Section 7: Written Feedback -->
+                <div class="section">
+                    <h2 class="section-title" data-text="section7">အကြေးခံစာ</h2>
+                    
+                    <div class="form-group">
+                        <label for="comments_suggestions" data-text="comments">အကြေးခံစာ နှင့် အကြံပြုချက်များ <span class="optional" data-text="optional">(ရွေးချယ်ခွင့်ရှိ)</span></label>
+                        <textarea id="comments_suggestions" name="comments_suggestions" placeholder=""></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="staff_recognition" data-text="staff-recognition">ဝန်ဆောင်မှုသူ အသိအမှတ်ပြုခြင်း <span class="optional" data-text="optional">(ရွေးချယ်ခွင့်ရှိ)</span></label>
+                        <input type="text" id="staff_recognition" name="staff_recognition" placeholder="">
+                    </div>
+                </div>
+
+                <div class="loading" id="loadingIndicator">
+                    <p data-text="submitting">ပေးပို့နေသည်...</p>
+                </div>
+
+                <button type="submit" class="btn-submit" data-text="submit-btn">အကြေးခံစာ ပေးပို့ရန်</button>
+            </form>
         </div>
-
-        <div class="loading" id="loadingSpinner">
-            <div class="spinner"></div>
-            <p>ပေးပို့နေသည်...</p>
-        </div>
-
-        <form id="feedbackForm" style="display: block;">
-            <div class="header">
-                <h1>MEGA Z</h1>
-                <p>Sky View & Family KTV</p>
-                <p style="margin-top: 10px; font-size: 0.9em;">အကြေးခံပြစာ</p>
-            </div>
-
-            <!-- SECTION 1: CUSTOMER INFORMATION -->
-            <div class="section">
-                <div class="section-title" data-my="အကြေးခံသူ အချက်အလက်" data-en="Customer Information">အကြေးခံသူ အချက်အလက်</div>
-
-                <div class="form-group">
-                    <label data-my="အမည်" data-en="Name">အမည်</label>
-                    <input type="text" id="customer_name" name="customer_name" placeholder="">
-                    <p class="optional-text" data-my="(ရွေးချယ်ခွင့်ရှိ)" data-en="(Optional)">(ရွေးချယ်ခွင့်ရှိ)</p>
-                </div>
-
-                <div class="form-group">
-                    <label data-my="ဖုန်းနံပါတ်" data-en="Phone Number">ဖုန်းနံပါတ်</label>
-                    <input type="tel" id="phone_number" name="phone_number" placeholder="">
-                    <p class="optional-text" data-my="(ရွေးချယ်ခွင့်ရှိ)" data-en="(Optional)">(ရွေးချယ်ခွင့်ရှိ)</p>
-                </div>
-
-                <div class="form-group">
-                    <label data-my="လည်ပတ်ခဲ့သည့်နေ့စွဲ" data-en="Visit Date">လည်ပတ်ခဲ့သည့်နေ့စွဲ</label>
-                    <input type="date" id="visit_date" name="visit_date">
-                </div>
-
-                <div class="form-group">
-                    <label data-my="လည်ပတ်ခဲ့သည့်အချိန်" data-en="Visit Time">လည်ပတ်ခဲ့သည့်အချိန်</label>
-                    <select id="visit_time" name="visit_time" required>
-                        <option value="">-- ရွေးချယ်ပါ --</option>
-                        <option value="Lunch">နံနက်စာ (Lunch)</option>
-                        <option value="Dinner">ညစာ (Dinner)</option>
-                        <option value="Late Night">နံနက်ပိုင်း (Late Night)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label data-my="အခန်း/စားပွဲ နံပါတ်" data-en="Room/Table No">အခန်း/စားပွဲ နံပါတ်</label>
-                    <input type="text" id="room_table_no" name="room_table_no" placeholder="">
-                    <p class="optional-text" data-my="(ရွေးချယ်ခွင့်ရှိ)" data-en="(Optional)">(ရွေးချယ်ခွင့်ရှိ)</p>
-                </div>
-            </div>
-
-            <!-- SECTION 2: SERVICE EVALUATION -->
-            <div class="section">
-                <div class="section-title" data-my="ဝန်ဆောင်မှု အဆင့်သတ်မှတ်ခြင်း" data-en="Service Evaluation">ဝန်ဆောင်မှု အဆင့်သတ်မှတ်ခြင်း</div>
-
-                <table class="rating-matrix">
-                    <thead>
-                        <tr>
-                            <th data-my="အကဲအဆတ်" data-en="Item">အကဲအဆတ်</th>
-                            <th data-my="အလွန်ကောင်း" data-en="Excellent">အလွန်ကောင်း</th>
-                            <th data-my="ကောင်း" data-en="Good">ကောင်း</th>
-                            <th data-my="အလယ်အလတ်" data-en="Fair">အလယ်အလတ်</th>
-                            <th data-my="အားနည်း" data-en="Poor">အားနည်း</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-my="ဝန်ဆောင်မှုသူ၏ အလိုအလျှောက်နှင့် ကြိုဆိုခြင်း" data-en="Staff Welcome & Greeting">ဝန်ဆောင်မှုသူ၏ အလိုအလျှောက်နှင့် ကြိုဆိုခြင်း</td>
-                            <td><input type="radio" name="staff_welcome" value="Excellent"></td>
-                            <td><input type="radio" name="staff_welcome" value="Good"></td>
-                            <td><input type="radio" name="staff_welcome" value="Fair"></td>
-                            <td><input type="radio" name="staff_welcome" value="Poor"></td>
-                        </tr>
-                        <tr>
-                            <td data-my="ဝန်ဆောင်မှုသူ၏ အမူအကျင့်" data-en="Staff Attitude & Behavior">ဝန်ဆောင်မှုသူ၏ အမူအကျင့်</td>
-                            <td><input type="radio" name="staff_attitude" value="Excellent"></td>
-                            <td><input type="radio" name="staff_attitude" value="Good"></td>
-                            <td><input type="radio" name="staff_attitude" value="Fair"></td>
-                            <td><input type="radio" name="staff_attitude" value="Poor"></td>
-                        </tr>
-                        <tr>
-                            <td data-my="ဝန်ဆောင်မှု၏ အမြန်လျှင်မြန်ခြင်း" data-en="Service Speed">ဝန်ဆောင်မှု၏ အမြန်လျှင်မြန်ခြင်း</td>
-                            <td><input type="radio" name="service_speed" value="Excellent"></td>
-                            <td><input type="radio" name="service_speed" value="Good"></td>
-                            <td><input type="radio" name="service_speed" value="Fair"></td>
-                            <td><input type="radio" name="service_speed" value="Poor"></td>
-                        </tr>
-                        <tr>
-                            <td data-my="ဝန်ဆောင်မှုသူ၏ ဆက်သွယ်ရန်အလယ်အလတ်" data-en="Staff Communication">ဝန်ဆောင်မှုသူ၏ ဆက်သွယ်ရန်အလယ်အလတ်</td>
-                            <td><input type="radio" name="staff_communication" value="Excellent"></td>
-                            <td><input type="radio" name="staff_communication" value="Good"></td>
-                            <td><input type="radio" name="staff_communication" value="Fair"></td>
-                            <td><input type="radio" name="staff_communication" value="Poor"></td>
-                        </tr>
-                        <tr>
-                            <td data-my="အခန်း/စားပွဲ 청결" data-en="Room/Table Cleanliness">အခန်း/စားပွဲ 청결</td>
-                            <td><input type="radio" name="cleanliness" value="Excellent"></td>
-                            <td><input type="radio" name="cleanliness" value="Good"></td>
-                            <td><input type="radio" name="cleanliness" value="Fair"></td>
-                            <td><input type="radio" name="cleanliness" value="Poor"></td>
-                        </tr>
-                        <tr>
-                            <td data-my="ကုန်ပြီးမြောက်သော ဝန်ဆောင်မှု အတွေ့အကြုံ" data-en="Overall Service Experience">ကုန်ပြီးမြောက်သော ဝန်ဆောင်မှု အတွေ့အကြုံ</td>
-                            <td><input type="radio" name="overall_service" value="Excellent"></td>
-                            <td><input type="radio" name="overall_service" value="Good"></td>
-                            <td><input type="radio" name="overall_service" value="Fair"></td>
-                            <td><input type="radio" name="overall_service" value="Poor"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- SECTION 3: FOOD EVALUATION -->
-            <div class="section">
-                <div class="section-title" data-my="အစားအစာ အဆင့်သတ်မှတ်ခြင်း" data-en="Food Evaluation">အစားအစာ အဆင့်သတ်မှတ်ခြင်း</div>
-
-                <table class="rating-matrix">
-                    <thead>
-                        <tr>
-                            <th data-my="အကဲအဆတ်" data-en="Item">အကဲအဆတ်</th>
-                            <th data-my="အလွန်ကောင်း" data-en="Excellent">အလွန်ကောင်း</th>
-                            <th data-my="ကောင်း" data-en="Good">ကောင်း</th>
-                            <th data-my="အလယ်အလတ်" data-en="Fair">အလယ်အလတ်</th>
-                            <th data-my="အားနည်း" data-en="Poor">အားနည်း</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-my="အစားအစာ၏ အရသာ" data-en="Food Taste">အစားအစာ၏ အရသာ</td>
-                            <td><input type="radio" name="food_taste" value="Excellent"></td>
-                            <td><input type="radio" name="food_taste" value="Good"></td>
-                            <td><input type="radio" name="food_taste" value="Fair"></td>
-                            <td><input type="radio" name="food_taste" value="Poor"></td>
-                        </tr>
-                        <tr>
-                            <td data-my="အစားအစာ၏ စိုစေးခြင်း" data-en="Food Freshness">အစားအစာ၏ စိုစေးခြင်း</td>
-                            <td><input type="radio" name="food_freshness" value="Excellent"></td>
-                            <td><input type="radio" name="food_freshness" value="Good"></td>
-                            <td><input type="radio" name="food_freshness" value="Fair"></td>
-                            <td><input type="radio" name="food_freshness" value="Poor"></td>
-                        </tr>
-                        <tr>
-                            <td data-my="အစားအစာ၏ ပြသနည်းလမ်း" data-en="Food Presentation">အစားအစာ၏ ပြသနည်းလမ်း</td>
-                            <td><input type="radio" name="food_presentation" value="Excellent"></td>
-                            <td><input type="radio" name="food_presentation" value="Good"></td>
-                            <td><input type="radio" name="food_presentation" value="Fair"></td>
-                            <td><input type="radio" name="food_presentation" value="Poor"></td>
-                        </tr>
-                        <tr>
-                            <td data-my="အစားအစာ၏ အရေအတွက်" data-en="Food Portion">အစားအစာ၏ အရေအတွက်</td>
-                            <td><input type="radio" name="food_portion" value="Excellent"></td>
-                            <td><input type="radio" name="food_portion" value="Good"></td>
-                            <td><input type="radio" name="food_portion" value="Fair"></td>
-                            <td><input type="radio" name="food_portion" value="Poor"></td>
-                        </tr>
-                        <tr>
-                            <td data-my="စာရင်း၏ အမျိုးအစားများ" data-en="Menu Variety">စာရင်း၏ အမျိုးအစားများ</td>
-                            <td><input type="radio" name="menu_variety" value="Excellent"></td>
-                            <td><input type="radio" name="menu_variety" value="Good"></td>
-                            <td><input type="radio" name="menu_variety" value="Fair"></td>
-                            <td><input type="radio" name="menu_variety" value="Poor"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- SECTION 4: BEVERAGE EVALUATION -->
-            <div class="section">
-                <div class="section-title" data-my="အသောက်အရည် အဆင့်သတ်မှတ်ခြင်း" data-en="Beverage/Bar Evaluation">အသောက်အရည် အဆင့်သတ်မှတ်ခြင်း</div>
-
-                <table class="rating-matrix">
-                    <thead>
-                        <tr>
-                            <th data-my="အကဲအဆတ်" data-en="Item">အကဲအဆတ်</th>
-                            <th data-my="အလွန်ကောင်း" data-en="Excellent">အလွန်ကောင်း</th>
-                            <th data-my="ကောင်း" data-en="Good">ကောင်း</th>
-                            <th data-my="အလယ်အလတ်" data-en="Fair">အလယ်အလတ်</th>
-                            <th data-my="အားနည်း" data-en="Poor">အားနည်း</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-my="အသောက်အရည်၏ အရည်အသွေး" data-en="Drink Quality">အသောက်အရည်၏ အရည်အသွေး</td>
-                            <td><input type="radio" name="drink_quality" value="Excellent"></td>
-                            <td><input type="radio" name="drink_quality" value="Good"></td>
-                            <td><input type="radio" name="drink_quality" value="Fair"></td>
-                            <td><input type="radio" name="drink_quality" value="Poor"></td>
-                        </tr>
-                        <tr>
-                            <td data-my="အသောက်အရည်၏ အရသာ" data-en="Drink Taste">အသောက်အရည်၏ အရသာ</td>
-                            <td><input type="radio" name="drink_taste" value="Excellent"></td>
-                            <td><input type="radio" name="drink_taste" value="Good"></td>
-                            <td><input type="radio" name="drink_taste" value="Fair"></td>
-                            <td><input type="radio" name="drink_taste" value="Poor"></td>
-                        </tr>
-                        <tr>
-                            <td data-my="ဘားဝန်ဆောင်မှု" data-en="Bar Service">ဘားဝန်ဆောင်မှု</td>
-                            <td><input type="radio" name="bar_service" value="Excellent"></td>
-                            <td><input type="radio" name="bar_service" value="Good"></td>
-                            <td><input type="radio" name="bar_service" value="Fair"></td>
-                            <td><input type="radio" name="bar_service" value="Poor"></td>
-                        </tr>
-                        <tr>
-                            <td data-my="အသောက်အရည်၏ ပြသနည်းလမ်း" data-en="Drink Presentation">အသောက်အရည်၏ ပြသနည်းလမ်း</td>
-                            <td><input type="radio" name="drink_presentation" value="Excellent"></td>
-                            <td><input type="radio" name="drink_presentation" value="Good"></td>
-                            <td><input type="radio" name="drink_presentation" value="Fair"></td>
-                            <td><input type="radio" name="drink_presentation" value="Poor"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- SECTION 5: FAMILY KTV EVALUATION -->
-            <div class="section">
-                <div class="section-title" data-my="မိသားစုကေတီဗီ အဆင့်သတ်မှတ်ခြင်း" data-en="Family KTV Evaluation">မိသားစုကေတီဗီ အဆင့်သတ်မှတ်ခြင်း</div>
-
-                <table class="rating-matrix">
-                    <thead>
-                        <tr>
-                            <th data-my="အကဲအဆတ်" data-en="Item">အကဲအဆတ်</th>
-                            <th data-my="အလွန်ကောင်း" data-en="Excellent">အလွန်ကောင်း</th>
-                            <th data-my="ကောင်း" data-en="Good">ကောင်း</th>
-                            <th data-my="အလယ်အလတ်" data-en="Fair">အလယ်အလတ်</th>
-                            <th data-my="အားနည်း" data-en="Poor">အားနည်း</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-my="အသံ အရည်အသွေး" data-en="Sound Quality">အသံ အရည်အသွေး</td>
-                            <td><input type="radio" name="sound_quality" value="Excellent"></td>
-                            <td><input type="radio" name="sound_quality" value="Good"></td>
-                            <td><input type="radio" name="sound_quality" value="Fair"></td>
-                            <td><input type="radio" name="sound_quality" value="Poor"></td>
-                        </tr>
-                        <tr>
-                            <td data-my="အခန်း၏ အဆင်ပြေခြင်း" data-en="Room Comfort">အခန်း၏ အဆင်ပြေခြင်း</td>
-                            <td><input type="radio" name="room_comfort" value="Excellent"></td>
-                            <td><input type="radio" name="room_comfort" value="Good"></td>
-                            <td><input type="radio" name="room_comfort" value="Fair"></td>
-                            <td><input type="radio" name="room_comfort" value="Poor"></td>
-                        </tr>
-                        <tr>
-                            <td data-my="အခန်း၏ ရှင်းလင်းခြင်း" data-en="Room Cleanliness">အခန်း၏ ရှင်းလင်းခြင်း</td>
-                            <td><input type="radio" name="room_cleanliness" value="Excellent"></td>
-                            <td><input type="radio" name="room_cleanliness" value="Good"></td>
-                            <td><input type="radio" name="room_cleanliness" value="Fair"></td>
-                            <td><input type="radio" name="room_cleanliness" value="Poor"></td>
-                        </tr>
-                        <tr>
-                            <td data-my="သီချင်းစနစ် အရည်အသွေး" data-en="Song System Quality">သီချင်းစနစ် အရည်အသွေး</td>
-                            <td><input type="radio" name="song_system" value="Excellent"></td>
-                            <td><input type="radio" name="song_system" value="Good"></td>
-                            <td><input type="radio" name="song_system" value="Fair"></td>
-                            <td><input type="radio" name="song_system" value="Poor"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- SECTION 6: OVERALL SATISFACTION -->
-            <div class="section">
-                <div class="section-title" data-my="ကုန်ပြီးမြောက်သော ကျေးဇူးတင်မှု" data-en="Overall Satisfaction">ကုန်ပြီးမြောက်သော ကျေးဇူးတင်မှု</div>
-
-                <div class="form-group">
-                    <label data-my="သင့်ကျေးဇူးတင်မှု အဆင့်" data-en="Overall Satisfaction Level">သင့်ကျေးဇူးတင်မှု အဆင့်</label>
-                    <div class="button-group" id="satisfactionGroup">
-                        <button type="button" class="rating-button" data-value="Very Satisfied" onclick="selectRating(this, 'overall_satisfaction')" data-my="အလွန်ကျေးဇူးတင်သည်" data-en="Very Satisfied">အလွန်ကျေးဇူးတင်သည်</button>
-                        <button type="button" class="rating-button" data-value="Satisfied" onclick="selectRating(this, 'overall_satisfaction')" data-my="ကျေးဇူးတင်သည်" data-en="Satisfied">ကျေးဇူးတင်သည်</button>
-                        <button type="button" class="rating-button" data-value="Neutral" onclick="selectRating(this, 'overall_satisfaction')" data-my="အလယ်အလတ်" data-en="Neutral">အလယ်အလတ်</button>
-                        <button type="button" class="rating-button" data-value="Dissatisfied" onclick="selectRating(this, 'overall_satisfaction')" data-my="မကျေးဇူးတင်သည်" data-en="Dissatisfied">မကျေးဇူးတင်သည်</button>
-                    </div>
-                    <input type="hidden" id="overall_satisfaction" name="overall_satisfaction">
-                </div>
-
-                <div class="form-group">
-                    <label data-my="နောက်တစ်ကြိမ်လည်ပတ်ရန် ရည်ရွယ်သည်か" data-en="Will You Visit Again?">နောက်တစ်ကြိမ်လည်ပတ်ရန် ရည်ရွယ်သည်か</label>
-                    <div class="button-group" id="visitAgainGroup">
-                        <button type="button" class="rating-button" data-value="Yes" onclick="selectRating(this, 'visit_again')" data-my="ဟုတ်ကဲ့" data-en="Yes">ဟုတ်ကဲ့</button>
-                        <button type="button" class="rating-button" data-value="Maybe" onclick="selectRating(this, 'visit_again')" data-my="ထင်မြင်ရန်" data-en="Maybe">ထင်မြင်ရန်</button>
-                        <button type="button" class="rating-button" data-value="No" onclick="selectRating(this, 'visit_again')" data-my="မဟုတ်ပါ" data-en="No">မဟုတ်ပါ</button>
-                    </div>
-                    <input type="hidden" id="visit_again" name="visit_again">
-                </div>
-
-                <div class="form-group">
-                    <label data-my="သူငယ်ချင်းများအား အကြံပြုမည်か" data-en="Will You Recommend to Friends?">သူငယ်ချင်းများအား အကြံပြုမည်か</label>
-                    <div class="button-group" id="recommendGroup">
-                        <button type="button" class="rating-button" data-value="Yes" onclick="selectRating(this, 'recommend')" data-my="ဟုတ်ကဲ့" data-en="Yes">ဟုတ်ကဲ့</button>
-                        <button type="button" class="rating-button" data-value="Maybe" onclick="selectRating(this, 'recommend')" data-my="ထင်မြင်ရန်" data-en="Maybe">ထင်မြင်ရန်</button>
-                        <button type="button" class="rating-button" data-value="No" onclick="selectRating(this, 'recommend')" data-my="မဟုတ်ပါ" data-en="No">မဟုတ်ပါ</button>
-                    </div>
-                    <input type="hidden" id="recommend" name="recommend">
-                </div>
-            </div>
-
-            <!-- SECTION 7: WRITTEN FEEDBACK -->
-            <div class="section">
-                <div class="section-title" data-my="အကြေးခံစာ" data-en="Written Feedback">အကြေးခံစာ</div>
-
-                <div class="form-group">
-                    <label data-my="အကြေးခံစာ နှင့် အကြံပြုချက်များ" data-en="Comments & Suggestions">အကြေးခံစာ နှင့် အကြံပြုချက်များ</label>
-                    <textarea id="comments_suggestions" name="comments_suggestions" placeholder=""></textarea>
-                    <p class="optional-text" data-my="(ရွေးချယ်ခွင့်ရှိ)" data-en="(Optional)">(ရွေးချယ်ခွင့်ရှိ)</p>
-                </div>
-
-                <div class="form-group">
-                    <label data-my="ဝန်ဆောင်မှုသူ အသိအမှတ်ပြုခြင်း" data-en="Staff Recognition">ဝန်ဆောင်မှုသူ အသိအမှတ်ပြုခြင်း</label>
-                    <input type="text" id="staff_recognition" name="staff_recognition" placeholder="">
-                    <p class="optional-text" data-my="(ရွေးချယ်ခွင့်ရှိ)" data-en="(Optional)">(ရွေးချယ်ခွင့်ရှိ)</p>
-                </div>
-            </div>
-
-            <!-- SUBMIT BUTTON -->
-            <button type="submit" class="submit-btn" data-my="အကြေးခံစာ ပေးပို့ရန်" data-en="Submit Feedback">အကြေးခံစာ ပေးပို့ရန်</button>
-        </form>
     </div>
 
     <script>
-        const DEPLOYMENT_ID = 'AKfycbx-KST8tiJxLJeZZDVrP9zyVEMaDnUF82i7rXZM2fabKtWOc_F1NM917fKD4xTMu2r50Q';
-        const SCRIPT_URL = `https://script.google.com/macros/d/${DEPLOYMENT_ID}/userweb?e=onFailure&customFunction=processForm`;
-        
+        // Translations
+        const translations = {
+            my: {
+                "subtitle": "Sky View & Family KTV",
+                "form-title": "အကြေးခံပြစာ",
+                "section1": "● အကြေးခံသူ အချက်အလက်",
+                "section2": "● ဝန်ဆောင်မှု အဆင့်သတ်မှတ်ခြင်း",
+                "section3": "● အစားအစာ အဆင့်သတ်မှတ်ခြင်း",
+                "section4": "● အသောက်အရည် အဆင့်သတ်မှတ်ခြင်း",
+                "section5": "● မိသားစုကေတီဗီ အဆင့်သတ်မှတ်ခြင်း",
+                "section6": "● ကုန်ပြီးမြောက်သော ကျေးဇူးတင်မှု",
+                "section7": "● အကြေးခံစာ",
+                "name": "အမည်",
+                "phone": "ဖုန်းနံပါတ်",
+                "visit-date": "လည်ပတ်ခဲ့သည့်နေ့စွဲ",
+                "visit-time": "လည်ပတ်ခဲ့သည့်အချိန်",
+                "room": "အခန်း/စားပွဲ နံပါတ်",
+                "optional": "(ရွေးချယ်ခွင့်ရှိ)",
+                "criteria": "အကဲအဆတ်",
+                "excellent": "အလွန်ကောင်း",
+                "good": "ကောင်း",
+                "fair": "အလယ်အလတ်",
+                "poor": "အားနည်း",
+                "service-welcome": "ဝန်ဆောင်မှုသူ၏ အလိုအလျှောက်နှင့် ကြိုဆိုခြင်း",
+                "service-attitude": "ဝန်ဆောင်မှုသူ၏ အမူအကျင့်",
+                "service-speed": "ဝန်ဆောင်မှု၏ အမြန်လျှင်မြန်ခြင်း",
+                "service-communication": "ဝန်ဆောင်မှုသူ၏ ဆက်သွယ်ရန်အလယ်အလတ်",
+                "service-cleanliness": "အခန်း/စားပွဲ ရှင်းလင်းခြင်း",
+                "service-overall": "ကုန်ပြီးမြောက်သော ဝန်ဆောင်မှု အတွေ့အကြုံ",
+                "food-taste": "အစားအစာ၏ အရသာ",
+                "food-freshness": "အစားအစာ၏ စိုစေးခြင်း",
+                "food-presentation": "အစားအစာ၏ ပြသနည်းလမ်း",
+                "food-portion": "အစားအစာ၏ အရေအတွက်",
+                "food-variety": "စာရင်း၏ အမျိုးအစားများ",
+                "beverage-quality": "အသောက်အရည်၏ အရည်အသွေး",
+                "beverage-taste": "အသောက်အရည်၏ အရသာ",
+                "bar-service": "ဘားဝန်ဆောင်မှု",
+                "beverage-presentation": "အသောက်အရည်၏ ပြသနည်းလမ်း",
+                "ktv-sound": "အသံ အရည်အသွေး",
+                "ktv-comfort": "အခန်း၏ အဆင်ပြေခြင်း",
+                "ktv-cleanliness": "အခန်း၏ ရှင်းလင်းခြင်း",
+                "ktv-system": "သီချင်းစနစ် အရည်အသွေး",
+                "satisfaction-level": "သင့်ကျေးဇူးတင်မှု အဆင့်",
+                "very-satisfied": "အလွန်ကျေးဇူးတင်သည်",
+                "satisfied": "ကျေးဇူးတင်သည်",
+                "neutral": "အလယ်အလတ်",
+                "dissatisfied": "မကျေးဇူးတင်သည်",
+                "revisit": "နောက်တစ်ကြိမ်လည်ပတ်ရန် ရည်ရွယ်သည်",
+                "recommend": "သူငယ်ချင်းများအား အကြံပြုမည်",
+                "yes": "ဟုတ်ကဲ့",
+                "maybe": "ထင်မြင်ရန်",
+                "no": "မဟုတ်ပါ",
+                "comments": "အကြေးခံစာ နှင့် အကြံပြုချက်များ",
+                "staff-recognition": "ဝန်ဆောင်မှုသူ အသိအမှတ်ပြုခြင်း",
+                "submit-btn": "အကြေးခံစာ ပေးပို့ရန်",
+                "submitting": "ပေးပို့နေသည်...",
+                "success-msg": "✓ ကျေးဇူးတင်သည်။ သင့်အကြေးခံစာကို လက်ခံရရှိပြီးပါပြီ။",
+                "error-msg": "အမှားအယွင်း: ပေးပို့ရန်မအောင်မြင်ခဲ့ပါ။ ထပ်မံစမ်းကြည့်ပါ။"
+            },
+            en: {
+                "subtitle": "Sky View & Family KTV",
+                "form-title": "Customer Feedback Form",
+                "section1": "● Customer Information",
+                "section2": "● Service Evaluation",
+                "section3": "● Food Evaluation",
+                "section4": "● Beverage Evaluation",
+                "section5": "● Family KTV Evaluation",
+                "section6": "● Overall Satisfaction",
+                "section7": "● Written Feedback",
+                "name": "Name",
+                "phone": "Phone Number",
+                "visit-date": "Visit Date",
+                "visit-time": "Visit Time",
+                "room": "Room/Table Number",
+                "optional": "(Optional)",
+                "criteria": "Criteria",
+                "excellent": "Excellent",
+                "good": "Good",
+                "fair": "Fair",
+                "poor": "Poor",
+                "service-welcome": "Staff Welcome & Greeting",
+                "service-attitude": "Staff Attitude",
+                "service-speed": "Service Speed",
+                "service-communication": "Staff Communication",
+                "service-cleanliness": "Room/Table Cleanliness",
+                "service-overall": "Overall Service Experience",
+                "food-taste": "Food Taste",
+                "food-freshness": "Food Freshness",
+                "food-presentation": "Food Presentation",
+                "food-portion": "Food Portion",
+                "food-variety": "Menu Variety",
+                "beverage-quality": "Beverage Quality",
+                "beverage-taste": "Beverage Taste",
+                "bar-service": "Bar Service",
+                "beverage-presentation": "Beverage Presentation",
+                "ktv-sound": "Sound Quality",
+                "ktv-comfort": "Room Comfort",
+                "ktv-cleanliness": "Room Cleanliness",
+                "ktv-system": "Song System Quality",
+                "satisfaction-level": "Overall Satisfaction Level",
+                "very-satisfied": "Very Satisfied",
+                "satisfied": "Satisfied",
+                "neutral": "Neutral",
+                "dissatisfied": "Dissatisfied",
+                "revisit": "Will You Revisit?",
+                "recommend": "Will You Recommend to Friends?",
+                "yes": "Yes",
+                "maybe": "Maybe",
+                "no": "No",
+                "comments": "Comments & Suggestions",
+                "staff-recognition": "Staff Recognition",
+                "submit-btn": "Submit Feedback",
+                "submitting": "Submitting...",
+                "success-msg": "✓ Thank you! Your feedback has been received successfully.",
+                "error-msg": "Error: Failed to submit. Please try again."
+            }
+        };
+
         let currentLanguage = 'my';
 
-        // Set language
-        function setLanguage(lang) {
-            currentLanguage = lang;
-            document.querySelectorAll('[data-my][data-en]').forEach(el => {
-                el.textContent = lang === 'my' ? el.getAttribute('data-my') : el.getAttribute('data-en');
+        // Language switching
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentLanguage = this.dataset.lang;
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                updateLanguage();
             });
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
+        });
+
+        function updateLanguage() {
+            document.querySelectorAll('[data-text]').forEach(el => {
+                const key = el.dataset.text;
+                if (translations[currentLanguage][key]) {
+                    el.textContent = translations[currentLanguage][key];
+                }
             });
-            event.target.classList.add('active');
         }
 
-        // Select rating button
-        function selectRating(button, fieldId) {
-            const group = button.parentElement;
-            group.querySelectorAll('.rating-button').forEach(btn => {
-                btn.classList.remove('selected');
+        // Button group selection
+        document.querySelectorAll('.button-group .btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const fieldName = this.dataset.name;
+                const fieldValue = this.dataset.value;
+                
+                // Remove active state from siblings
+                this.parentElement.querySelectorAll('.btn').forEach(b => b.classList.remove('selected'));
+                
+                // Add active state to clicked button
+                this.classList.add('selected');
+                
+                // Set hidden input value
+                document.getElementById(fieldName).value = fieldValue;
             });
-            button.classList.add('selected');
-            document.getElementById(fieldId).value = button.getAttribute('data-value');
-        }
+        });
 
-        // Handle form submission
+        // Form submission
         document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-
+            
+            const submitBtn = document.querySelector('.btn-submit');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Hide messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
             // Show loading
-            document.getElementById('loadingSpinner').classList.add('show');
-            document.getElementById('successMessage').classList.remove('show');
-            document.getElementById('errorMessage').classList.remove('show');
-
-            // Collect form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
+            loadingIndicator.style.display = 'block';
+            submitBtn.disabled = true;
 
             try {
-                // Send data to Google Apps Script
-                const response = await fetch(SCRIPT_URL, {
+                // Collect form data
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Add timestamp
+                data.timestamp = new Date().toISOString();
+                data.language = currentLanguage;
+
+                // Send to Google Apps Script
+                const scriptURL = 'https://script.google.com/macros/d/AKfycbx-KST8tiJxLJeZZDVrP9zyVEMaDnUF82i7rXZM2fabKtWOc_F1NM917fKD4xTMu2r50Q/userweb';
+                
+                const response = await fetch(scriptURL, {
                     method: 'POST',
                     body: JSON.stringify(data),
                     headers: {
@@ -759,39 +841,32 @@
                     }
                 });
 
-                const result = await response.json();
-
-                if (result.status === 'success') {
+                if (response.ok) {
                     // Show success message
-                    document.getElementById('loadingSpinner').classList.remove('show');
-                    document.getElementById('successMessage').classList.add('show');
+                    successMessage.style.display = 'block';
                     
                     // Reset form
-                    document.getElementById('feedbackForm').reset();
-                    document.querySelectorAll('.rating-button').forEach(btn => {
-                        btn.classList.remove('selected');
-                    });
-
+                    this.reset();
+                    document.querySelectorAll('.btn.selected').forEach(btn => btn.classList.remove('selected'));
+                    document.querySelectorAll('input[type="hidden"]').forEach(input => input.value = '');
+                    
                     // Scroll to top
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-
-                    // Hide success message after 5 seconds
-                    setTimeout(() => {
-                        document.getElementById('successMessage').classList.remove('show');
-                    }, 5000);
+                    window.scrollTo(0, 0);
                 } else {
-                    throw new Error(result.message || 'Unknown error');
+                    throw new Error('Network response was not ok');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                document.getElementById('loadingSpinner').classList.remove('show');
-                document.getElementById('errorMessage').classList.add('show');
-                document.getElementById('errorText').textContent = error.message || 'အမှားအယွင်းတစ်ခုဖြစ်ပေါ်ခဲ့သည်။ ထပ်မံကြိုးစားပါ။';
+                errorMessage.style.display = 'block';
+                document.getElementById('errorText').textContent = translations[currentLanguage]['error-msg'];
+            } finally {
+                loadingIndicator.style.display = 'none';
+                submitBtn.disabled = false;
             }
         });
 
         // Initialize language
-        setLanguage('my');
+        updateLanguage();
     </script>
 </body>
 </html>
