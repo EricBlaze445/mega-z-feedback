@@ -118,7 +118,6 @@
         input[type="text"],
         input[type="tel"],
         input[type="date"],
-        input[type="email"],
         select,
         textarea {
             width: 100%;
@@ -135,7 +134,6 @@
         input[type="text"]:focus,
         input[type="tel"]:focus,
         input[type="date"]:focus,
-        input[type="email"]:focus,
         select:focus,
         textarea:focus {
             outline: none;
@@ -303,13 +301,7 @@
             <p id="loadingText">Submitting your feedback...</p>
         </div>
 
-        <form id="feedbackForm" action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="4e6e0e9b-e2d4-4c67-8f6d-8c7f8e9f0a1b">
-            <input type="hidden" name="subject" value="New Mega Z Customer Feedback Submission">
-            <input type="hidden" name="from_name" value="Mega Z Feedback Form">
-            <input type="hidden" name="to_email" value="taddyshare009@gmail.com">
-            <input type="hidden" name="redirect" value="https://EricBlaze445.github.io/mega-z-feedback/?success=true">
-
+        <form id="feedbackForm" onsubmit="submitForm(event)">
             <!-- Section 1: Customer Information -->
             <div class="section">
                 <div class="section-title" id="section1Title">Section 1: Customer Information</div>
@@ -715,6 +707,7 @@
         // Current language
         let currentLanguage = 'en';
         let ratings = {};
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyBhTUo7iFvOTidiVvjsryOoNX54dqikaHxCgpJT875QOfgWlDAOkG3xuzSH8FOAQnTqA/userweb';
 
         // Switch language
         function switchLanguage(lang) {
@@ -783,16 +776,6 @@
         function setRating(e, id, value) {
             e.preventDefault();
             ratings[id] = value;
-            // Create hidden input for form submission
-            let input = document.getElementById('hidden_' + id);
-            if (!input) {
-                input = document.createElement('input');
-                input.type = 'hidden';
-                input.id = 'hidden_' + id;
-                input.name = id;
-                document.getElementById('feedbackForm').appendChild(input);
-            }
-            input.value = value;
             // Update button appearance
             document.querySelectorAll(`button[onclick*="setRating(event, '${id}'"]`).forEach(btn => {
                 btn.classList.remove('selected');
@@ -800,19 +783,80 @@
             e.target.classList.add('selected');
         }
 
-        // Check for success parameter
-        window.addEventListener('load', function() {
-            const params = new URLSearchParams(window.location.search);
-            if (params.get('success') === 'true') {
+        // Submit form
+        async function submitForm(e) {
+            e.preventDefault();
+
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
+
+            // Prepare form data
+            const formData = {
+                customer_name: document.getElementById('customerName').value,
+                phone_number: document.getElementById('phone').value,
+                visit_date: document.getElementById('visitDate').value,
+                visit_time: document.getElementById('visitTime').value,
+                room_table_no: document.getElementById('roomTable').value,
+                staff_welcome: ratings['service1'] || '',
+                staff_attitude: ratings['service2'] || '',
+                service_speed: ratings['service3'] || '',
+                staff_communication: ratings['service4'] || '',
+                cleanliness: ratings['service5'] || '',
+                overall_service: ratings['service6'] || '',
+                food_taste: ratings['food1'] || '',
+                food_freshness: ratings['food2'] || '',
+                food_presentation: ratings['food3'] || '',
+                food_portion: ratings['food4'] || '',
+                menu_variety: ratings['food5'] || '',
+                drink_quality: ratings['bev1'] || '',
+                drink_taste: ratings['bev2'] || '',
+                bar_service: ratings['bev3'] || '',
+                drink_presentation: ratings['bev4'] || '',
+                sound_quality: ratings['ktv1'] || '',
+                room_comfort: ratings['ktv2'] || '',
+                room_cleanliness: ratings['ktv3'] || '',
+                song_system: ratings['ktv4'] || '',
+                overall_satisfaction: ratings['overallRating'] || '',
+                visit_again: ratings['willReturn'] || '',
+                recommend: ratings['recommend'] || '',
+                comments_suggestions: document.getElementById('comments').value,
+                staff_recognition: document.getElementById('staffRecognition').value
+            };
+
+            try {
+                // Send to Google Apps Script
+                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(formData),
+                    mode: 'no-cors'
+                });
+
+                // Show success message
+                document.getElementById('loading').style.display = 'none';
                 document.getElementById('successMessage').style.display = 'block';
+                
+                // Reset form
                 document.getElementById('feedbackForm').reset();
-                document.querySelectorAll('.rating-btn.selected').forEach(btn => btn.classList.remove('selected'));
                 ratings = {};
+                document.querySelectorAll('.rating-btn.selected').forEach(btn => btn.classList.remove('selected'));
+
+                // Hide success message after 5 seconds
                 setTimeout(() => {
-                    window.history.replaceState({}, document.title, window.location.pathname);
-                }, 3000);
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 5000);
+
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('errorMessage').style.display = 'block';
+                
+                setTimeout(() => {
+                    document.getElementById('errorMessage').style.display = 'none';
+                }, 5000);
             }
-        });
+        }
 
         // Initialize
         updateLanguage();
